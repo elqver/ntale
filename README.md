@@ -4,7 +4,6 @@ Sure, here is a beautified version of your `README.md`:
 
 # NeuroTale
 
-TODO: add logo here
 ![Logo](./ntale.jpg)
 
 ## Description
@@ -60,4 +59,36 @@ You can run NeuroTale in three ways:
 
 ### Inside a Docker Container
 
-(TODO: Add Docker instructions)
+You can run script inside docker container. 
+It will get you rid of interpreter and packages dependencies problems, 
+but you are still the one to provide and setup all API tokens.
+
+
+1. **Clone this repository:**
+    ```sh
+    git clone https://github.com/elqver/ntale && cd ntale
+    ```
+
+2. **Create .env file:**
+    ```sh
+    NINJA_API_KEY=
+    GOOGLE_CLOUD_API_KEY=
+    OPEN_WEATHER_API_KEY=
+    YANDEX_CATALOG_ID=
+    YANDEX_OAUTH_TOKEN=
+    GIGA_CLIENT_ID=
+    GIGA_CLIENT_SECRET=
+    GIGA_AUTH_DATA=
+    GIGA_SCOPE=
+    SHARED_PATH=storage
+    ```
+
+3. **Build docker image**
+    ```sh
+    docker build -t neurotale .
+    ```
+
+4. **And run container**
+    ```sh
+    docker run --env-file .env -v "$(pwd)/storage:/app/storage" neurotale Saratov Action 2000
+    ```
