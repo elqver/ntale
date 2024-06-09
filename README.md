@@ -1,7 +1,3 @@
-Sure, here is a beautified version of your `README.md`:
-
----
-
 # NeuroTale
 
 ![Logo](./ntale.jpg)
