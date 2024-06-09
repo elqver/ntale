@@ -64,4 +64,5 @@ async def get_tomorrow_weather(
                 "units": "metric",
             },
         )
+        r.raise_for_status()
         return DailyForecast(**r.json()["daily"][1])

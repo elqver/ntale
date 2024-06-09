@@ -12,6 +12,7 @@ async def translate(q: str, target: str, google_cloud_api_key: str) -> str:
                 "key": google_cloud_api_key,
             },
         )
+        r.raise_for_status()
         return r.json()["data"]["translations"][0]["translatedText"]
 
 

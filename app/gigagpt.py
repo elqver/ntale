@@ -32,6 +32,7 @@ class GigaToken:
                     "Authorization": f"Basic {self._auth_data}",
                 },
             )
+            r.raise_for_status()
             r = r.json()
             self._token = r["access_token"]
             self._expires_at = r["expires_at"]
@@ -45,13 +46,17 @@ async def list_models(token: GigaToken):
     # TODO:
     async with httpx.AsyncClient(verify=False) as client:
         return (
-            await client.get(
-                "https://gigachat.devices.sberbank.ru/api/v1/models",
-                headers={
-                    "Authorization": f"Bearer {await token}",
-                },
+            (
+                await client.get(
+                    "https://gigachat.devices.sberbank.ru/api/v1/models",
+                    headers={
+                        "Authorization": f"Bearer {await token}",
+                    },
+                )
             )
-        ).json()
+            .raise_for_status()
+            .json()
+        )
 
 
 async def request_gpt(

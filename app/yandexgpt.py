@@ -21,7 +21,7 @@ class IamToken:
                 },
             )
             self._iam_token: str = r.json()["iamToken"]
-            expair_iso: str = r.json()["expiresAt"][:26]
+            expair_iso: str = r.raise_for_status().json()["expiresAt"][:26]
             self._iam_expires_at: float = (
                 datetime.fromisoformat(expair_iso)
                 .replace(tzinfo=timezone.utc)
@@ -71,4 +71,5 @@ async def request_gpt(
             },
             timeout=20,
         )
+        r.raise_for_status()
         return r.json()["result"]["alternatives"][0]["message"]["text"]
