@@ -99,6 +99,6 @@ async def request_gpt(
                 "https://gigachat.devices.sberbank.ru/api/v1/chat/completions",
                 headers=headers,
                 json=data,
-                timeout=20,
+                timeout=60,
             )
         ).json()["choices"][0]["message"]["content"]

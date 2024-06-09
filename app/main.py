@@ -32,7 +32,7 @@ async def main():
         generate_tale("yandex", args.city, args.genre, args.length),
         generate_tale("giga", args.city, args.genre, args.length),
     )
-    postfix = f"{args.city}_{args.genre}_{args.length}_{datetime.now()}"
+    postfix = f"{args.city}_{args.genre}_{args.length}_{datetime.now().strftime('%Y-%m-%d_%H:%M:%S.%f')}"
     yandex_tale_path = SHARED_PATH / f"tales/yandex_tale_{postfix}.txt"
     giga_tale_path = SHARED_PATH / f"tales/giga_tale_{postfix}.txt"
     save_to_file(yandex_tale_path, yandex_tale)

@@ -10,7 +10,9 @@ COPY requirements.txt /app
 RUN pip install --upgrade pip && \
     pip install -r requirements.txt
 
+
+EXPOSE 8000
+
 # Run app/main.py when the container launches
-ENTRYPOINT ["python", "main.py"]
-CMD ["Moscow", "Action", "2000"]
+CMD ["python", "web_app.py"]
 

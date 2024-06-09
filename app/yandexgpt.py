@@ -69,7 +69,7 @@ async def request_gpt(
                 "x-folder-id": catalog_id,
                 "Content-Type": "application/json",
             },
-            timeout=20,
+            timeout=60,
         )
         r.raise_for_status()
         return r.json()["result"]["alternatives"][0]["message"]["text"]
