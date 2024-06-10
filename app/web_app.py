@@ -9,7 +9,8 @@ from pydantic import BaseModel
 
 from pipeline import generate_tale
 from file_utils import save_to_file
-from setup import SHARED_PATH
+from setup import SHARED_PATH, setup_logging
+
 
 app = FastAPI()
 
@@ -69,6 +70,7 @@ async def create_tale(request: TaleRequest):
 
 
 if __name__ == "__main__":
+    setup_logging()
     import uvicorn
 
     uvicorn.run(app, host="0.0.0.0")
