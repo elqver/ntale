@@ -88,3 +88,15 @@ but you are still the one to provide and setup all API tokens.
     ```sh
     docker run --env-file .env -v "$(pwd)/storage:/app/storage" neurotale Saratov Action 2000
     ```
+
+### Just play with hosted version
+
+You can just go `http://45.145.6.50:8000/docs`
+This is suitable because you don't need run any software or collect API tokens by youreself.
+By the way you alse can checkout `web-port` branch and host web version by yourself.
+Instructions are the same as for first two variants except for target file: `web_app.py`.
+
+**CARE**: 
+
+Endpoints are deffenetly not safe! 
+Don't expose it to WAN on machines with sensetive information!
